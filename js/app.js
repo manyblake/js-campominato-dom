@@ -75,8 +75,7 @@ function getChessBox() {
       endGame(true);
     }
   } else {
-    let boxes = document.querySelectorAll(".chess-box");
-    chessBox.classList.add(`fail`);
+    let boxes = document.querySelectorAll(`.chess-box`);
 
     for (let i = 0; i < bombPositions.length; i++) {
       let bomb = bombPositions[i] - 1;
