@@ -3,6 +3,7 @@ const difficultyCheck = document.getElementById(`game-difficulty`);
 const gameStart = document.querySelector(`.button`);
 let numberOfChessBoxes;
 let bombPositions = [];
+let score = 0;
 
 gameStart.addEventListener(`click`, function () {
   const selectedDifficulty = parseInt(difficultyCheck.value);
@@ -37,12 +38,39 @@ function setBombs() {
   console.log(bombPositions);
 }
 
+function endGame(result) {
+  const endMask = document.createElement(`div`);
+  playground.appendChild(endMask);
+  endMask.className = `end-mask`;
+
+  const endBox = document.createElement(`div`);
+  endMask.appendChild(endBox);
+  endBox.className = `end-box`;
+
+  const endMessage = document.createElement(`p`);
+  endBox.appendChild(endMessage);
+  endMessage.className = `end-message`;
+
+  const newGame = document.createElement(`button`);
+  endBox.appendChild(newGame);
+  endBox.classList.add = `new-game`;
+  newGame.innerHTML = `Riprova`;
+
+  if (!result) {
+    endMessage.innerHTML = `Hai Vinto!`;
+  } else {
+    endMessage.innerHTML = `Hai Perso.`;
+  }
+}
+
 function getChessBox() {
   const chessBox = this;
 
   if (!bombPositions.includes(parseInt(this.innerHTML))) {
     chessBox.classList.add(`success`);
+    score++;
   } else {
     chessBox.classList.add(`fail`);
+    endGame(false);
   }
 }

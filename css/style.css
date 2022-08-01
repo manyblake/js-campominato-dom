@@ -20,6 +20,7 @@ body {
 
 .chessboard {
   display: grid;
+  position: relative;
 }
 
 .chess-box {
@@ -30,6 +31,7 @@ body {
   justify-content: center;
   border: 1px solid black;
   aspect-ratio: 1/1;
+  cursor: pointer;
 }
 
 .match-creation {
@@ -50,4 +52,25 @@ body {
 
 .success {
   background-color: #51e57a;
+}
+
+.end-mask {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.end-box {
+  background-color: #bed;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
