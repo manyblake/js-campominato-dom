@@ -55,11 +55,12 @@ function endGame(result) {
   endBox.appendChild(newGame);
   endBox.classList.add = `new-game`;
   newGame.innerHTML = `Riprova`;
+  newGame.addEventListener(`click`, resetGame);
 
-  if (!result) {
-    endMessage.innerHTML = `Hai Vinto!`;
+  if (result) {
+    endMessage.innerHTML = `Hai Vinto! Hai totalizzato ${score} punti`;
   } else {
-    endMessage.innerHTML = `Hai Perso.`;
+    endMessage.innerHTML = `Hai Perso. Hai totalizzato ${score} punti`;
   }
 }
 
@@ -68,9 +69,22 @@ function getChessBox() {
 
   if (!bombPositions.includes(parseInt(this.innerHTML))) {
     chessBox.classList.add(`success`);
-    score++;
+    if (score < numberOfChessBoxes - bombPositions.length - 1) {
+      score++;
+    } else {
+      endGame(true);
+    }
   } else {
     chessBox.classList.add(`fail`);
     endGame(false);
   }
+}
+
+function resetGame() {
+  bombPositions = [];
+  score = 0;
+  playground.innerHTML = ``;
+  playground.classList.add(`hidden`);
+  gameStart.classList.remove(`hidden`);
+  difficultyCheck.classList.remove(`hidden`);
 }
