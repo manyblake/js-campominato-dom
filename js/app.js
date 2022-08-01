@@ -75,7 +75,15 @@ function getChessBox() {
       endGame(true);
     }
   } else {
+    let boxes = document.querySelectorAll(".chess-box");
     chessBox.classList.add(`fail`);
+
+    for (let i = 0; i < bombPositions.length; i++) {
+      let bomb = bombPositions[i] - 1;
+
+      boxes[bomb].classList.add(`fail`);
+    }
+
     endGame(false);
   }
 }
