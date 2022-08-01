@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #0ff1c3;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+.chessboard {
+  display: grid;
+}
+
+.chess-box {
+  flex-basis: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  aspect-ratio: 1/1;
+}
+
+.match-creation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match-creation input,
+.match-creation select {
+  padding: 32px 48px;
+}
+
+.fail {
+  background-color: #b00b1e;
+}
+
+.success {
+  background-color: #51e57a;
+}
